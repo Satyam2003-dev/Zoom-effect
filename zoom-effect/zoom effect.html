@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        background:linear-gradient(120deg, green,yellow);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        min-height: 100vh;
+      }
+
+      #container {
+        box-shadow: 3px 3px 4px rgb(49, 31, 212);
+        height: 500px;
+        width: 500px;
+        overflow: hidden;
+      }
+
+      img {
+        transform-origin: center center;
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zoom Effect</title>
+  </head>
+  <body>
+    <div id="container">
+      <img
+        src="kingfisher.jpg"/>
+    </div>
+    <script>
+      const container = document.getElementById("container");
+      const img = document.querySelector("img");
+
+      container.addEventListener("mousemove", (e) => {
+        const x = e.clientX - e.target.offsetLeft;
+        const y = e.clientY - e.target.offsetTop;
+
+        console.log(x, y);
+
+        img.style.transformOrigin = `${x}px ${y}px`;
+        img.style.transform = "scale(4)";
+      });
+
+      container.addEventListener("mouseleave", () => {
+        img.style.transformOrigin = "center center";
+        img.style.transform = "scale(1)";
+      });
+    </script>
+  </body>
+</html>
